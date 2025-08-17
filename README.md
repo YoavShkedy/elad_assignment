@@ -46,7 +46,7 @@ The system follows a sophisticated multi-phase architecture:
 
 ## 🎥 Demo Video
 
-**Note**: Due to file size constraints on GitHub (the video is 101.78 MB), the demo video `example.mov` is not included in this repository. The video file should be added manually to the project root directory.
+**Note**: Due to file size constraints on GitHub, the demo video `example.mov` is not included in this repository and is attached in the email.
 
 The demo video demonstrates the complete chatbot interaction flow:
 1. **Initial greeting** and information collection phase
@@ -74,9 +74,7 @@ Create a `.env` file in the project root and add your Azure OpenAI credentials:
 # Azure OpenAI Configuration
 AZURE_OPENAI_API_KEY=your_azure_openai_api_key_here
 AZURE_OPENAI_ENDPOINT=https://your-resource-name.openai.azure.com/
-
-# Optional: Adjust API versions if needed
-AZURE_OPENAI_API_VERSION=2024-12-01-preview
+AZURE_OPENAI_API_VERSION=your_azure_openai_api_version
 ```
 
 **Note**: The `.env` file is not provided in this repository for security reasons. You must create it with your own Azure OpenAI credentials.
@@ -105,7 +103,6 @@ This script will:
 
 ### 4. Run the Application
 
-#### Option A: Run Both Services (Recommended)
 ```bash
 python run.py
 ```
@@ -114,18 +111,6 @@ This will start both:
 - **Backend API** on `http://localhost:8000`
 - **Frontend UI** on `http://localhost:7860`
 
-#### Option B: Run Services Separately
-
-**Backend only:**
-```bash
-python app.py
-```
-
-**Frontend only:**
-```bash
-python gradio_ui.py
-```
-
 ## 🌐 Usage
 
 ### Web Interface
@@ -133,22 +118,6 @@ python gradio_ui.py
 2. Start chatting with the bot in Hebrew or English
 3. Provide your personal information when requested
 4. Ask questions about medical services
-
-### API Endpoints
-
-#### Core Endpoints:
-- `GET /` - Health check
-- `POST /sessions` - Create new conversation session
-- `POST /chat/stateful` - Send message (stateful conversation)
-- `GET /sessions/{id}` - Get session information
-- `DELETE /sessions/{id}` - Delete session
-
-#### Debug Endpoints:
-- `POST /debug/chat/stateful` - Chat with detailed workflow logging
-- `GET /vector-store/stats` - Vector database statistics
-
-#### API Documentation:
-Visit `http://localhost:8000/docs` for interactive API documentation.
 
 ## 🔧 Technical Features
 
@@ -174,50 +143,6 @@ Visit `http://localhost:8000/docs` for interactive API documentation.
 ### Multilingual Support
 - **Hebrew/English**: Seamless language detection and response
 - **Context Awareness**: Maintains conversation language preference
-- **Character Encoding**: Full UTF-8 support for Hebrew text
-
-## 📁 Project Structure
-
-```
-elad_assignment/
-├── app.py                     # FastAPI backend application
-├── gradio_ui.py              # Gradio frontend interface
-├── run.py                    # Convenience script to run both services
-├── requirements.txt          # Python dependencies
-├── workflow.png              # Architecture diagram
-├── example.mov               # Demo video
-├── .env                      # Environment variables (create this)
-│
-├── data/                     # Data directory
-│   ├── processed/            # Processed Markdown documents
-│   ├── raw/                  # Original HTML documents
-│   └── chunked/              # Chunked documents for debugging
-│
-├── indexes/                  # Vector database files
-│   ├── faiss_index.bin       # FAISS vector index
-│   ├── documents.pkl         # Document chunks
-│   └── metadata.pkl          # Document metadata
-│
-├── models/                   # Data models and schemas
-│   └── schemas.py            # Pydantic models
-│
-├── prompts/                  # System prompts
-│   ├── info_collection.txt   # Information collection agent prompt
-│   ├── info_extraction.txt   # Information extraction tool prompt
-│   └── qa.txt                # Q&A agent prompt
-│
-├── scripts/                  # Utility scripts
-│   ├── build_index.py        # Vector index builder
-│   └── html_parser.py        # HTML to Markdown converter
-│
-├── services/                 # Core services
-│   ├── agent_tools.py        # LangGraph tools (search, extraction)
-│   ├── session_store.py      # Session management
-│   └── vector_service.py     # Vector database interface
-│
-└── workflow/                 # LangGraph workflow
-    └── workflow.py           # Workflow definition and agents
-```
 
 ## 🎯 Key Features
 
@@ -301,33 +226,3 @@ Error: Services directory not found!
 - **Reasoning**: Rapid development with production-ready performance
 - **Benefits**: Automatic API documentation, async support, simple UI development
 - **Alternative**: Flask + React (more complex), Streamlit (less flexible)
-
-## 🔮 Future Enhancements
-
-### Planned Features
-- **Multi-turn Context**: Extended conversation memory beyond single sessions
-- **Document Upload**: User-provided document analysis
-- **Voice Interface**: Speech-to-text and text-to-speech capabilities
-- **Analytics Dashboard**: Conversation analytics and insights
-- **Integration APIs**: Connect with actual HMO systems
-
-### Scalability Considerations
-- **Database Backend**: PostgreSQL for session persistence
-- **Caching Layer**: Redis for performance optimization
-- **Load Balancing**: Multiple worker processes
-- **Monitoring**: Comprehensive logging and metrics
-
-## 📝 License & Contributing
-
-This project was developed as part of a technical assignment. For questions or suggestions, please contact the development team.
-
-### Development Guidelines
-- Follow PEP 8 style guidelines
-- Add type hints to all functions
-- Include docstrings for public methods
-- Write unit tests for new features
-- Update documentation for any changes
-
----
-
-**Built with ❤️ for Israeli healthcare accessibility**
