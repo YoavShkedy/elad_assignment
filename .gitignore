@@ -73,3 +73,6 @@ dmypy.json
 # Temporary files
 *.tmp
 *.temp
+
+# Large media files (add manually due to size constraints)
+example.mov

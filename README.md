@@ -46,9 +46,9 @@ The system follows a sophisticated multi-phase architecture:
 
 ## 🎥 Demo Video
 
-![Example Usage](example.mov)
+**Note**: Due to file size constraints on GitHub (the video is 101.78 MB), the demo video `example.mov` is not included in this repository. The video file should be added manually to the project root directory.
 
-This video demonstrates the complete chatbot interaction flow:
+The demo video demonstrates the complete chatbot interaction flow:
 1. **Initial greeting** and information collection phase
 2. **Natural conversation** for gathering user details
 3. **Profile confirmation** and validation
