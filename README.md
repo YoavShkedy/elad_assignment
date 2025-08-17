@@ -2,7 +2,7 @@
 
 ## Overview
 
-An intelligent Hebrew/English bilingual chatbot for Israeli Health Maintenance Organizations (HMOs) that provides personalized medical service information using RAG (Retrieval-Augmented Generation) with LangGraph workflow orchestration.
+An intelligent chatbot for Israeli Health Maintenance Organizations (HMOs) that provides personalized medical service information using RAG with LangGraph workflow orchestration.
 
 This project implements a sophisticated conversational AI system that:
 - Collects user information through natural conversation
