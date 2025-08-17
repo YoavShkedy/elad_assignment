@@ -11,6 +11,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from langchain_openai import AzureOpenAIEmbeddings
 from models.schemas import RetrievalResult
 from dotenv import load_dotenv
+import dotenv
 
 # Load environment variables
 load_dotenv()
@@ -22,7 +23,7 @@ class VectorService:
         # Use Azure OpenAI embeddings
         self.embeddings = AzureOpenAIEmbeddings(
             azure_deployment="text-embedding-3-small",
-            api_version="2024-12-01-preview"
+            api_version=dotenv.get_key(".env", "AZURE_OPENAI_API_VERSION")
         )
         # Load FAISS index and associated data
         self.index = None

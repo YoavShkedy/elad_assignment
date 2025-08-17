@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from typing import List, Dict, Any
 from dotenv import load_dotenv
-
+import os
 # Import the workflow and dependencies
 from workflow.workflow import Workflow, WorkflowState
 from models.schemas import *
@@ -12,6 +12,7 @@ from services.session_store import session_store
 from langchain_openai import AzureChatOpenAI
 from langchain.schema import HumanMessage, AIMessage, BaseMessage
 from langchain_core.messages import convert_to_messages
+import dotenv
 
 # Load environment variables
 load_dotenv()
@@ -45,7 +46,7 @@ try:
     # Initialize Azure OpenAI
     llm = AzureChatOpenAI(
         azure_deployment="gpt-4o",
-        api_version="2024-12-01-preview",
+        api_version=dotenv.get_key(".env", "AZURE_OPENAI_API_VERSION"),
         temperature=0
     )
     

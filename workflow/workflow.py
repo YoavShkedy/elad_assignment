@@ -18,6 +18,7 @@ from dotenv import load_dotenv
 from langchain_core.messages import BaseMessage, SystemMessage
 from typing import Annotated, TypedDict
 import json
+import dotenv
 
 # Load environment variables
 load_dotenv()
@@ -272,7 +273,7 @@ if __name__ == "__main__":
     # Initialize the workflow
     llm = AzureChatOpenAI(
         azure_deployment="gpt-4o",
-        api_version="2024-12-01-preview",
+        api_version=dotenv.get_key(".env", "AZURE_OPENAI_API_VERSION"),
         temperature=0
     )
 

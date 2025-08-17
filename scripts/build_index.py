@@ -13,6 +13,7 @@ from typing import List, Dict, Any
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from dotenv import load_dotenv
+import dotenv
 
 # Add parent directory to path to import models
 sys.path.append(str(Path(__file__).parent.parent))
@@ -28,7 +29,7 @@ class IndexBuilder:
         # Use Azure OpenAI embeddings
         self.embeddings = AzureOpenAIEmbeddings(
             azure_deployment="text-embedding-3-small",
-            api_version="2024-12-01-preview"
+            api_version=dotenv.get_key(".env", "AZURE_OPENAI_API_VERSION")
         )
         # Use RecursiveCharacterTextSplitter to split text into chunks
         self.text_splitter = RecursiveCharacterTextSplitter(
